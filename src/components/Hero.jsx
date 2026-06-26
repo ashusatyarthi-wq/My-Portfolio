@@ -17,13 +17,15 @@ const TypeWriter = ({ words }) => {
 
   // Typing logic
   useEffect(() => {
-    if (index === words.length) {
+    if (index >= words.length) {
       setIndex(0);
       return;
     }
 
+    const currentWord = words[index] || '';
+
     if (
-      subIndex === words[index].length + 1 && 
+      subIndex === currentWord.length + 1 && 
       !reverse
     ) {
       setTimeout(() => setReverse(true), 1500);
@@ -32,7 +34,7 @@ const TypeWriter = ({ words }) => {
 
     if (subIndex === 0 && reverse) {
       setReverse(false);
-      setIndex((prev) => prev + 1);
+      setIndex((prev) => (prev + 1) % words.length);
       return;
     }
 
@@ -45,7 +47,7 @@ const TypeWriter = ({ words }) => {
 
   return (
     <span className="inline-block min-h-[1.2em]">
-      {`${words[index].substring(0, subIndex)}`}
+      {`${(words[index] || '').substring(0, subIndex)}`}
       <span className={`${blink ? 'opacity-100' : 'opacity-0'} text-slate-400 transition-opacity duration-100`}>_</span>
     </span>
   );
