@@ -11,6 +11,18 @@
   }
 }
 
+@layer utilities {
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+  .glass-card {
+    @apply bg-[#050505]/40 backdrop-blur-2xl border border-white/10 shadow-2xl;
+  }
+  .glass-card-light {
+    @apply bg-white/10 backdrop-blur-3xl border border-white/20;
+  }
+}
+
 /* Custom Scrollbar for Lenis */
 ::-webkit-scrollbar {
   width: 0px;
