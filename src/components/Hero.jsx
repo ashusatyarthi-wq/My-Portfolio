@@ -116,39 +116,39 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 1 }}
-          className="flex flex-wrap gap-4 items-center"
+          className="flex flex-col md:flex-row md:items-center gap-8 mt-2"
         >
-          <a href="#projects" className="group relative inline-flex items-center gap-2 px-8 py-4 bg-white text-slate-950 font-semibold rounded-full overflow-hidden hover:scale-105 transition-transform duration-300">
-            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-slate-200 to-slate-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-            <span className="relative">View My Projects</span>
-            <ChevronRight size={18} className="relative group-hover:translate-x-1 transition-transform" />
-          </a>
-          <a href="#contact" className="px-8 py-4 glass rounded-full font-medium hover:bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300">
-            Let's Connect
-          </a>
-        </motion.div>
+          <div className="flex flex-wrap gap-4 items-center">
+            <a href="#projects" className="group relative inline-flex items-center gap-2 px-8 py-4 bg-white text-slate-950 font-semibold rounded-full overflow-hidden hover:scale-105 transition-transform duration-300">
+              <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-slate-200 to-slate-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <span className="relative">View My Projects</span>
+              <ChevronRight size={18} className="relative group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a href="#contact" className="px-8 py-4 glass rounded-full font-medium hover:bg-white/5 border border-white/10 hover:border-white/20 transition-all duration-300">
+              Let's Connect
+            </a>
+          </div>
 
-        {/* Floating Social Icons */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.5 }}
-          className="absolute bottom-10 left-6 right-6 flex justify-between items-end pointer-events-none"
-        >
-          <div className="flex flex-col gap-4 pointer-events-auto">
+          <div className="flex items-center gap-4 md:border-l md:border-white/10 md:pl-8">
             <SocialLink href="https://github.com/ashusatyarthi-wq" icon={<FaGithub size={20} />} />
             <SocialLink href="https://linkedin.com/in/nitesh-satyarthi-746877137/" icon={<FaLinkedin size={20} />} />
             <SocialLink href="https://mail.google.com/mail/?view=cm&fs=1&to=ashusatyarthi@gmail.com" icon={<Mail size={20} />} />
           </div>
-          
-          <div className="hidden md:flex flex-col items-end gap-2 text-xs font-mono text-slate-500 pointer-events-auto">
-            <div className="flex items-center gap-2 hover:text-white transition-colors">
-              <MapPin size={14} />
-              <span>New Delhi, India</span>
-            </div>
-          </div>
         </motion.div>
       </div>
+
+      {/* Floating Location indicator (only on very large screens) */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.5 }}
+        className="hidden lg:flex absolute bottom-10 right-10 items-end gap-2 text-xs font-mono text-slate-500"
+      >
+        <div className="flex items-center gap-2 hover:text-white transition-colors">
+          <MapPin size={14} />
+          <span>New Delhi, India</span>
+        </div>
+      </motion.div>
     </section>
   );
 }
