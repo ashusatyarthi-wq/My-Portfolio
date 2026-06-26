@@ -46,20 +46,30 @@ const ProjectPanel = ({ project, index }) => {
         scale: scaleProgress,
         opacity: opacityProgress,
       }}
-      className="group relative w-full rounded-[2.5rem] overflow-hidden mb-12 glass border border-white/10"
+      className="group relative w-full rounded-[2.5rem] overflow-hidden mb-12 glass-card"
     >
       <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${project.color} to-transparent opacity-50`} />
       
-      <div className="flex flex-col lg:flex-row p-8 md:p-12 gap-8 items-center">
+      <div className="flex flex-col lg:flex-row p-6 md:p-10 gap-8 items-stretch">
         {/* Visual Side */}
-        <div className="w-full lg:w-2/5 flex flex-col items-center justify-center p-8 rounded-3xl bg-slate-900/50 border border-white/5 relative overflow-hidden group-hover:border-white/10 transition-colors">
-          <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-          <div className="relative z-10 w-24 h-24 rounded-full glass flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 shadow-[0_0_30px_rgba(124,58,237,0.2)]">
+        <div className="w-full lg:w-2/5 min-h-[300px] flex flex-col items-center justify-center p-8 rounded-[2rem] relative overflow-hidden transition-all duration-500">
+          {/* Abstract Backgrounds */}
+          <div className="absolute inset-0 bg-[#0a0a0a]" />
+          <div className={`absolute inset-0 bg-gradient-to-br ${project.color} to-transparent opacity-10 group-hover:opacity-30 transition-opacity duration-700`} />
+          
+          {/* CSS Grid Pattern */}
+          <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+          
+          {/* Glowing Orb */}
+          <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full bg-gradient-to-br ${project.color} blur-[60px] opacity-20 group-hover:opacity-60 group-hover:scale-150 transition-all duration-700`} />
+          
+          <div className="relative z-10 w-28 h-28 rounded-full glass flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-500 shadow-2xl">
             {project.icon}
           </div>
-          <div className="flex gap-2 relative z-10">
+          
+          <div className="flex flex-wrap justify-center gap-2 relative z-10">
             {project.tech.map((t, i) => (
-              <span key={i} className="text-xs font-mono px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-white/10">
+              <span key={i} className="text-xs font-mono px-4 py-1.5 rounded-full glass border border-white/20 text-white shadow-lg">
                 {t}
               </span>
             ))}
