@@ -91,7 +91,7 @@ export default function WebGlBackground() {
         <LiquidMetalShape />
         
         <Suspense fallback={null}>
-          <Environment preset="city" />
+          <Environment files={`${import.meta.env.BASE_URL}city.hdr`} />
         </Suspense>
       </Canvas>
     </div>
